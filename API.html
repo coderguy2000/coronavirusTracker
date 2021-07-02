@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<input type="text" id="country" value="" required>
+	<button id="button" onclick="getData()">Click me</button>
+	
+	<p class="mic"></p>
+	<p class="icon"></p>
+</body>
+</html>
+
+<script>
+
+	// $(document).ready(function(){
+		
+	// 	$("#button").click(function(){
+	// 		var x=document.getElementById('country').value;
+
+	// 		console.log(x);
+
+	// 		$.getJSON("https://api.covid19api.com/summary", 
+	// 		function(data){
+	// 			console.log(data);
+	// 			var i=0;
+	// 			while(i<190 && data["Countries"][i]["Country"]!=x){
+	// 				i++;
+	// 			}
+	// 			if(i<190){
+	// 				$(".icon").text(data["Countries"][i]["TotalConfirmed"]);
+	// 			}
+	// 			else{
+	// 				$(".icon").text('Bhai Country ka name to sahi likh');				}
+
+	// 		});
+
+
+	// 	});
+	// });
+
+
+	getData=()=>{
+		var countryName = document.getElementById('country').value;
+		console.log(countryName);
+
+		url = `https://api.covid19api.com/summary`;
+
+		//asynchronous function
+		fetch(url).then((response)=>{
+			return response.json();
+		}).then((data)=>{
+			console.log(data);
+		})
+
+		//1. first then is working as promise {if we get response we return information to second .then}
+		//2.)in json format to second .then and we will use data according we want
+	}
+</script>
